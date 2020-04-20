@@ -35,3 +35,7 @@ class RegisterClass(View):
             return redirect('/NguoiDung/login')
         else:
             return HttpResponse('Dwx liệu không validate')
+
+class ProfileClass(View):
+    def get(self, request):
+        return render(request,'NguoiDung/profile.html')

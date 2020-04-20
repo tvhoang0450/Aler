@@ -3,7 +3,7 @@
         <div class="hs-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="">
                         <div class="logo">
                             <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
                         </div>
@@ -16,8 +16,10 @@
                             </ul>
                             <a href="{% url 'PhongTro:add' %}" class="hw-btn">Đăng tim mới</a>
                             {% if not user.is_authenticated %}
-                            <a href="{% url 'NguoiDung:login' %}" class="hw-btn">Đăng nhập</a>
-                            <a href="{% url 'NguoiDung:register' %}" class="hw-btn">Đăng ký</a>
+                                <a href="{% url 'NguoiDung:login' %}" class="hw-btn">Đăng nhập</a>
+                                <a href="{% url 'NguoiDung:register' %}" class="hw-btn">Đăng ký</a>
+                            {% else %}
+                            <a href="{% url 'NguoiDung:profile' %}"><img src="{% static 'img/icons8-user-30.png' %}" alt="" style="position: relative; left: 30px"></a>
                             {% endif %}
                         </div>
                     </div>
