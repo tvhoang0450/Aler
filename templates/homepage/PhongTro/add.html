@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TÌM PHÒNG TRỌ</title>
+</head>
+<body>
+    <form action="{% url 'PhongTro:add'%}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<!--        <p>Mã dịch vụ {{ f.DichVu }}</p>
+        <p>Mã tỉnh {{ f.TinhTP}}</p>
+        <p>Mã huyện {{ f.HuyenQuan }}</p>
+        <p>Tiêu đề {{ f.TieuDe }}</p>
+        <p>Giá {{ f.Gia }}</p>
+        <p>Địa chỉ {{ f.DiaChi }}</p>
+        <p>Ảnh {{ f.Anh }}</p>
+        <p>Người đăng {{ f.NguoiDung }}</p>
+        <p>Ngày đăng {{ f.NgayDang }}</p>
+        <p>Số điện thoại {{ f.SDT }}</p>
+        <p>Nội dung {{ f.NoiDung }}</p>
+        <p>Diện tích {{ f.DienTich }}</p>-->
+        {{ f.as_p}}
+        <p><input type="submit" value="Thêm"></p>
+    </form>
+</body>
+</html>

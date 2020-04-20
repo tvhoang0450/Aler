@@ -1,0 +1,65 @@
+{% load static %}
+<header class="header-section">
+        <div class="hs-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="ht-widget">
+                            <ul>
+                                <li><i class="icon_mail_alt"></i> nhatro69@gmail.com</li>
+                                <li><i class="fa fa-mobile-phone"></i> 125-711-811 <span>125-668-886</span></li>
+                            </ul>
+                            <a href="{% url 'PhongTro:add' %}" class="hw-btn">Đăng tim mới</a>
+                            {% if not user.is_authenticated %}
+                            <a href="{% url 'NguoiDung:login' %}" class="hw-btn">Đăng nhập</a>
+                            <a href="{% url 'NguoiDung:register' %}" class="hw-btn">Đăng ký</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas-open">
+                    <span class="icon_menu"></span>
+                </div>
+            </div>
+        </div>
+        <div class="hs-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <nav class="nav-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="#">Danh mục</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./property.html">Cho thuê nhà trọ</a></li>
+                                        <li><a href="./profile.html">Nhà cho thuê</a></li>
+                                        <li><a href="./property-details.html">Tìm người ở ghép</a></li>
+                                        <li><a href="./property-comparison.html">Cho thuê mặt bằng</a></li>
+                                        <li><a href="./property-submit.html">Cho thuê căn hộ</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./agents.html">Bảng giá dịch vụ</a></li>
+                                <li><a href="{% url 'core:about'%}">Thông tin</a></li>
+                                <li><a href="{% url 'core:huongdan'%}">Hướng dẫn</a></li>
+                                <li><a href="{% url 'core:contact'%}">Liên hệ</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="hn-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
