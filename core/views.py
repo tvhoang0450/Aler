@@ -14,7 +14,7 @@ class Home(View):
 
         # Paging
         # paginator = Paginator(list, 2)
-        paginator = Paginator(phongtro_filter.qs, 2)
+        paginator = Paginator(phongtro_filter.qs, 6)
         page = request.GET.get('page', 1)
         try:
             orders_paged = paginator.page(page)
@@ -31,6 +31,7 @@ class Home(View):
         }
 
         return render(request, 'homepage/index.html', context)
+
 
 
 class About(View):

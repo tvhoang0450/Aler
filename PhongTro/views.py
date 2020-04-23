@@ -49,9 +49,7 @@ class getAll(View):
             'PhongTros': phongtro_filter.qs,
         }
 
-        # return render(request, 'homepage/index.html',
-        #               {'form': phongtro_filter.form, 'PhongTros': phongtro_filter.qs, 'list': list})
-        return render(request, 'homepage/index.html', context)
+        return render(request, 'homepage/index.html', {'list': list})
 
 
 class getdetail(View):

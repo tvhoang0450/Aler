@@ -1,4 +1,5 @@
 {% extends 'homepage/base.html' %}
+{% load param_replace %}
 {% load static %}
 
     {% block cssblock %}
@@ -24,8 +25,8 @@
         <div class="canvas-close">
             <span class="icon_close"></span>
         </div>
-        <div class="logo">
-            <a href="./index.html">
+<!--        <div class="logo">
+            <a href="/">
                 <img src="{% static 'img/logo.png' %}" alt="">
             </a>
         </div>
@@ -43,7 +44,7 @@
             <a href="#"><i class="fa fa-youtube-play"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
+        </div>-->
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
@@ -53,7 +54,7 @@
 
     <!-- Hero Section Begin -->
 
-    <section class="hero-section">
+<!--    <section class="hero-section">
         <div class="container">
             <div class="hs-slider owl-carousel">
                 {% for phongtro in list %}
@@ -80,7 +81,7 @@
                     </div>
                 </div>
                 {% endfor %}
-<!--                <div class="hs-item set-bg" data-setbg="{% static 'img/hero/hero-2.jpg' %}">
+&lt;!&ndash;                <div class="hs-item set-bg" data-setbg="{% static 'img/hero/hero-2.jpg' %}">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="hc-inner-text">
@@ -123,10 +124,10 @@
                             </div>
                         </div>
                     </div>
-                </div>-->
+                </div>&ndash;&gt;
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Hero Section End -->
 
@@ -285,7 +286,7 @@
     <!-- Search Section End -->
 
    <!-- hien thi tim kiem-->
-    <div class="container">
+<!--    <div class="container">
         <div class="row">
             <table class="table">
                 <thead>
@@ -315,81 +316,11 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>-->
 
         <!--phân trang-->
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Dich Vu</th>
-                    <th>Tỉnh</th>
-                    <th>Huyên</th>
-                    <th>Giá (VNĐ)</th>
-                    <th>Miêu tả</th>
-                    <th>Dien Tich</th>
-                    <th>Tieu đề</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for phongtro in orders %}
-                <tr>
-                    <td>{{ phongtro.DichVu }}</td>
-                    <td>{{ phongtro.TinhTP}}</td>
-                    <td>{{ phongtro.HuyenQuan }}</td>
-                    <td>{{ phongtro.Gia }}</td>
-                    <td>{{ phongtro.NoiDung }}</td>
-                    <td><img src="{{ phongtro.Anh.url }}"></td>
-                    <td>{{ phongtro.DienTich }}</td>
-                    <td>{{ phongtro.TieuDe }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
 <!--//////////////////////////////////////////////////////////////////-->
-    <div class="container">
-        <h4>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pull-right">
-
-                    {% if orders.has_previous %}
-                    <li><a href="?page={{ orders.previous_page_number }}">&laquo;</a></li>
-                    {% else %}
-                    <li class="disabled"><span>&laquo;</span></li>
-                    {% endif %}
-
-                    {% if orders.number > 5 %}
-                    <li><a href="?page=1"><i>1</i></a></li>
-                    {% endif %}
-
-                    {% for i in orders.paginator.page_range %}
-                    {% if i > orders.number|add:"-5" %}
-                        {% if i < orders.number|add:"5" %}
-                            {% if orders.number == i %}
-                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                            {% else %}
-                    <li><a href="?page={{ i }}">{{ i }}</a></li>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                    {% endfor %}
-
-                    {% if orders.number < orders.paginator.num_pages|add:"-5" %}
-                    <li><a href="?page={{ orders.paginator.num_pages }}"><i>{{ orders.paginator.num_pages }}</i></a></li>
-                    {% endif %}
-
-                    {% if orders.has_next %}
-                    <li><a href="?page={{ orders.next_page_number }}">&raquo;</a></li>
-                    {% else %}
-                    <li class="disabled"><span>&raquo;</span></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </h4>
-    </div>
-
-
     <!-- Property Section Begin -->
     <section class="property-section latest-property-section spad">
         <div class="container">
@@ -412,7 +343,7 @@
                 </div>
             </div>
             <div class="row property-filter">
-                {% for item in list %}
+                {% for item in orders %}
                 <div class="col-lg-4 col-md-6 mix all house">
                     <div class="property-item">
                         <div class="pi-pic set-bg" data-setbg="{{ item.Anh.url }}">
@@ -444,159 +375,50 @@
                     </div>
                 </div>
                 {% endfor %}
-<!--                <div class="col-lg-4 col-md-6 mix all restaurent hotel">-->
-<!--                    <div class="property-item">-->
-<!--                        <div class="pi-pic set-bg" data-setbg="{% static 'img/property/property-2.jpg' %}">-->
-<!--                            <div class="label c-red">For rent</div>-->
-<!--                        </div>-->
-<!--                        <div class="pi-text">-->
-<!--                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>-->
-<!--                            <div class="pt-price">$ 289.0</div>-->
-<!--                            <h5><a href="#">Unimont Aurum</a></h5>-->
-<!--                            <p><span class="icon_pin_alt"></span> Gut No.102, Opp. HP Petrol Pump, Karjat</p>-->
-<!--                            <ul>-->
-<!--                                <li><i class="fa fa-object-group"></i> 2, 283</li>-->
-<!--                                <li><i class="fa fa-bathtub"></i> 03</li>-->
-<!--                                <li><i class="fa fa-bed"></i> 05</li>-->
-<!--                                <li><i class="fa fa-automobile"></i> 01</li>-->
-<!--                            </ul>-->
-<!--                            <div class="pi-agent">-->
-<!--                                <div class="pa-item">-->
-<!--                                    <div class="pa-info">-->
-<!--                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">-->
-<!--                                        <h6>Ashton Kutcher</h6>-->
-<!--                                    </div>-->
-<!--                                    <div class="pa-text">-->
-<!--                                        123-455-688-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-4 col-md-6 mix all apart office">-->
-<!--                    <div class="property-item">-->
-<!--                        <div class="pi-pic set-bg" data-setbg="{% static 'img/property/property-2.jpg' %}">-->
-<!--                            <div class="label c-red">For rent</div>-->
-<!--                        </div>-->
-<!--                        <div class="pi-text">-->
-<!--                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>-->
-<!--                            <div class="pt-price">$ 289.0</div>-->
-<!--                            <h5><a href="#">Vrindavan Flora</a></h5>-->
-<!--                            <p><span class="icon_pin_alt"></span> No. 15, 16, 17-1A And 17-2, Rasayani, Rasayani</p>-->
-<!--                            <ul>-->
-<!--                                <li><i class="fa fa-object-group"></i> 2, 283</li>-->
-<!--                                <li><i class="fa fa-dolal"></i> 03</li>-->
-<!--                                <li><i class="fa fa-bed"></i> 05</li>-->
-<!--                                <li><i class="fa fa-automobile"></i> 01</li>-->
-<!--                            </ul>-->
-<!--                            <div class="pi-agent">-->
-<!--                                <div class="pa-item">-->
-<!--                                    <div class="pa-info">-->
-<!--                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">-->
-<!--                                        <h6>Ashton Kutcher</h6>-->
-<!--                                    </div>-->
-<!--                                    <div class="pa-text">-->
-<!--                                        123-455-688-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-4 col-md-6 mix all hotel restaruent">-->
-<!--                    <div class="property-item">-->
-<!--                        <div class="pi-pic set-bg" data-setbg="{% static 'img/property/property-4.jpg' %}">-->
-<!--                            <div class="label c-red">For rent</div>-->
-<!--                        </div>-->
-<!--                        <div class="pi-text">-->
-<!--                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>-->
-<!--                            <div class="pt-price">$ 289.0</div>-->
-<!--                            <h5><a href="#">Shramik Vaibhav</a></h5>-->
-<!--                            <p><span class="icon_pin_alt"></span> 12 Pt at Shedung, Panvel, Raigarh, Navi Mumbai</p>-->
-<!--                            <ul>-->
-<!--                                <li><i class="fa fa-object-group"></i> 2, 283</li>-->
-<!--                                <li><i class="fa fa-bathtub"></i> 03</li>-->
-<!--                                <li><i class="fa fa-bed"></i> 05</li>-->
-<!--                                <li><i class="fa fa-automobile"></i> 01</li>-->
-<!--                            </ul>-->
-<!--                            <div class="pi-agent">-->
-<!--                                <div class="pa-item">-->
-<!--                                    <div class="pa-info">-->
-<!--                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">-->
-<!--                                        <h6>Ashton Kutcher</h6>-->
-<!--                                    </div>-->
-<!--                                    <div class="pa-text">-->
-<!--                                        123-455-688-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-4 col-md-6 mix all office hotel">-->
-<!--                    <div class="property-item">-->
-<!--                        <div class="pi-pic set-bg" data-setbg="{% static 'img/property/property-5.jpg' %}">-->
-<!--                            <div class="label c-magenta">For rent</div>-->
-<!--                        </div>-->
-<!--                        <div class="pi-text">-->
-<!--                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>-->
-<!--                            <div class="pt-price">$ 289.0</div>-->
-<!--                            <h5><a href="#">Poddar Wondercity</a></h5>-->
-<!--                            <p><span class="icon_pin_alt"></span> Badlapur East, Beyond Thane</p>-->
-<!--                            <ul>-->
-<!--                                <li><i class="fa fa-object-group"></i> 2, 283</li>-->
-<!--                                <li><i class="fa fa-bathtub"></i> 03</li>-->
-<!--                                <li><i class="fa fa-bed"></i> 05</li>-->
-<!--                                <li><i class="fa fa-automobile"></i> 01</li>-->
-<!--                            </ul>-->
-<!--                            <div class="pi-agent">-->
-<!--                                <div class="pa-item">-->
-<!--                                    <div class="pa-info">-->
-<!--                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">-->
-<!--                                        <h6>Ashton Kutcher</h6>-->
-<!--                                    </div>-->
-<!--                                    <div class="pa-text">-->
-<!--                                        123-455-688-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-4 col-md-6 mix house apart office">-->
-<!--                    <div class="property-item">-->
-<!--                        <div class="pi-pic set-bg" data-setbg="{% static 'img/property/property-6.jpg' %}">-->
-<!--                            <div class="label">For rent</div>-->
-<!--                        </div>-->
-<!--                        <div class="pi-text">-->
-<!--                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>-->
-<!--                            <div class="pt-price">$ 289.0<span>/month</span></div>-->
-<!--                            <h5><a href="#">GoldCrest Residency</a></h5>-->
-<!--                            <p><span class="icon_pin_alt"></span> No.7, Sector- 11, Ghansoli, Mumbai, Navi Mumbai</p>-->
-<!--                            <ul>-->
-<!--                                <li><i class="fa fa-object-group"></i> 2, 283</li>-->
-<!--                                <li><i class="fa fa-bathtub"></i> 03</li>-->
-<!--                                <li><i class="fa fa-bed"></i> 05</li>-->
-<!--                                <li><i class="fa fa-automobile"></i> 01</li>-->
-<!--                            </ul>-->
-<!--                            <div class="pi-agent">-->
-<!--                                <div class="pa-item">-->
-<!--                                    <div class="pa-info">-->
-<!--                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">-->
-<!--                                        <h6>Ashton Kutcher</h6>-->
-<!--                                    </div>-->
-<!--                                    <div class="pa-text">-->
-<!--                                        123-455-688-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <h4>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pull-right">
+
+                    {% if orders.has_previous %}
+                    <li><a href="?{% param_replace page=orders.previous_page_number %}">&laquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+
+                    {% if orders.number > 5 %}
+                    <li><a href="?{% param_replace page=1 %}"><i>1</i></a></li>
+                    {% endif %}
+
+                    {% for i in orders.paginator.page_range %}
+                    {% if i > orders.number|add:"-5" %}
+                        {% if i < orders.number|add:"5" %}
+                            {% if orders.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                    <li><a href="?{% param_replace page=i %}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if orders.number < orders.paginator.num_pages|add:"-5" %}
+                    <li><a href="?{% param_replace page=orders.paginator.num_pages %}"><i>{{ orders.paginator.num_pages }}</i></a></li>
+                    {% endif %}
+
+                    {% if orders.has_next %}
+                    <li><a href="?{% param_replace page=orders.next_page_number %}">&raquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </h4>
+    </div>
     <!-- Property Section End -->
 
     <!-- Chooseus Section Begin -->

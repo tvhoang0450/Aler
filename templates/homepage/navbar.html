@@ -1,11 +1,11 @@
 {% load static %}
 <header class="header-section">
-        <div class="hs-top">
+        <div class="hs-top" >
             <div class="container">
                 <div class="row">
                     <div class="">
                         <div class="logo">
-                            <a href="./index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                            <a href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-10">
@@ -19,7 +19,7 @@
                                 <a href="{% url 'NguoiDung:login' %}" class="hw-btn">Đăng nhập</a>
                                 <a href="{% url 'NguoiDung:register' %}" class="hw-btn">Đăng ký</a>
                             {% else %}
-                            <a href="{% url 'NguoiDung:profile' %}"><img src="{% static 'img/icons8-user-30.png' %}" alt="" style="position: relative; left: 30px"></a>
+                            <a href="{% url 'NguoiDung:profile'  %}"><img src="{% static 'img/icons8-user-30.png' %}" alt="" style="position: relative; left: 30px"></a>
                             {% endif %}
                         </div>
                     </div>
@@ -30,12 +30,12 @@
             </div>
         </div>
         <div class="hs-nav">
-            <div class="container">
+            <div class="container"">
                 <div class="row">
                     <div class="col-lg-9">
                         <nav class="nav-menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li class="active"><a href="{% url 'core:index'%}">Trang chủ</a></li>
                                 <li><a href="#">Danh mục</a>
                                     <ul class="dropdown">
                                         <li><a href="./property.html">Cho thuê nhà trọ</a></li>

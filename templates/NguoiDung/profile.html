@@ -1,11 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>profile</title>
-</head>
-<body>
-    {{ user.username }}
-    {{ user.password }}
-</body>
-</html>
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+    {% block cssblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container" >
+            <h2 style="text-align: center;" >Cập nhật thông tin cá nhân</h2>
+            <br>
+            <div style="display: inline-block;">
+                <label for="" style="">Tên đăng nhập: </label>
+                <input type="text" style="width: 700px; text-align: center; margin-left: 100px;" value="{{ user.username }}" disabled>
+            </div>
+            <br><br>
+            <div style="display: inline-block;">
+                <label for="" style="">Email: </label>
+                <input type="text" style="width: 700px; text-align: center; margin-left: 172px;" value="{{ user.email }}">
+            </div>
+            <br><br>
+            <div style="display: inline-block;">
+                <label for="">Địa chỉ: </label>
+                <input type="text" style="width: 700px; text-align: center; margin-left: 165px;" value="{{ user.DiaChi }}">
+            </div>
+            <br><br>
+            <div style="display: inline-block;">
+                <label for="">Ngày Sinh: </label>
+                <input type="text" style="width: 700px; text-align: center; margin-left: 135px;" value="{{ user.NgaySinh }}">
+            </div>
+            <br><br>
+            <div style="display: inline-block;">
+                <label for="">Giới tính: </label>
+                <input type="text" style="width: 700px; text-align: center; margin-left: 150px;" value="{{ user.GioiTinh }}">
+            </div>
+            <br><br>
+            <button style="background-color: green; color: #ffffff; margin-bottom:100px; margin-left: 830px; width: 100px; height: 40px;">Lưu</button>
+        </div>
+        <div class="container">
+            <h2>TIN ĐÃ ĐĂNG</h2>
+                {% for item in dsach_tin_dang %}
+                    <div class="container">
+                      <div class="row">
+                          <div class="">
+                              <a href="/PhongTro/detail/{{item.id}}"><h3>{{ item.TieuDe }}</h3></a>
+                              <img src="{{ item.Anh.url }}" alt="{{ item.Anh.url }}" style="width:150px;height:100px;">
+
+                          </div>
+                      </div>
+                    </div>
+                {% endfor %}
+        </div>
+        {{ user.id }}
+
+    {% endblock %}
+
+    {% block jsblock %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+    <script src="{% static 'js/image-uploader.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endblock %}

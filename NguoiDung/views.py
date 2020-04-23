@@ -7,6 +7,7 @@ from django.views import View
 
 from .models import NguoiDung
 from .forms import NguoiDungForm
+from PhongTro.models import PhongTro
 
 
 class LoginClass(View):
@@ -36,6 +37,12 @@ class RegisterClass(View):
         else:
             return HttpResponse('Dwx liệu không validate')
 
+
 class ProfileClass(View):
-    def get(self, request):
-        return render(request,'NguoiDung/profile.html')
+    def get(self, request, **kwargs):
+        a = self.request.GET.get('id')
+        user_id = self.request.user
+        print(a)
+        print(self)
+        dsach_tin_dang = PhongTro.objects.filter(NguoiDung_id=user_id)
+        return render(request, 'NguoiDung/profile.html', {'dsach_tin_dang': dsach_tin_dang})
