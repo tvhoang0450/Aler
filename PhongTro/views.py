@@ -7,10 +7,11 @@ from .models import PhongTro
 
 from .forms import PhongTroForm
 from .filters import PhongTroFilter
+from HuyenQuan.models import HuyenQuan
 
 
 def index(request):
-    return HttpResponse("Đây là đài tiếng nói Việt Nam")
+    return HttpResponse("Xin chào")
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ class save_news_class(LoginRequiredMixin, View):
 
     def get(self, request):
         a = PhongTroForm()
-        return render(request, 'homepage/PhongTro/add.html', {'f': a})
+        return render(request, 'homepage/PhongTro/property-submit.html', {'f': a})
 
     def post(self, request):
         g = PhongTroForm(request.POST, request.FILES)
@@ -32,27 +33,27 @@ class save_news_class(LoginRequiredMixin, View):
 
 class getAll(View):
     def get(self, request):
-        list = PhongTro.objects.all()
-        # o1 = PhongTro.objects.get(pk=0)
-        # o2 = PhongTro.objects.get(pk=1)
-        # o3 = PhongTro.objects.get(pk=2)
-        # o4 = PhongTro.objects.get(pk=3)
-        # o5 = PhongTro.objects.get(pk=4)
-        # o6 = PhongTro.objects.get(pk=5)
-        # list = [o1, o2, o3, o4, o5, o6]
+        a = PhongTroForm()
+        return render(request, 'homepage/index.html', {'f': a})
 
-        query = PhongTro.objects.all()
-        phongtro_filter = PhongTroFilter(request.GET, queryset=query)
-
-        context = {
-            'form': phongtro_filter.form,
-            'PhongTros': phongtro_filter.qs,
-        }
-
-        return render(request, 'homepage/index.html', {'list': list})
+    def post(self, request):
+        g = PhongTroForm(request.POST, request.FILES)
+        if g.is_valid():
+            g.save()
+            return HttpResponse(g)
+        else:
+            return HttpResponse("Không lưu được validate")
 
 
 class getdetail(View):
     def get(self, request, PhongTro_id):
         p = PhongTro.objects.get(pk=PhongTro_id)
         return HttpResponse(p)
+
+
+def load_huyen(request):
+    tinhtp_id = request.GET.get('TinhTP')
+    quanhuyens = HuyenQuan.objects.filter(TinhTP_id=tinhtp_id).order_by('TenHuyen')
+    print(quanhuyens)
+    print(tinhtp_id)
+    return render(request, 'homepage/PhongTro/loadhuyen.html', {'quanhuyens': quanhuyens})

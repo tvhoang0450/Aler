@@ -131,8 +131,7 @@
       color: #999;
       cursor: default; }
 
-.no-csspointerevents .nice-select .list {
-  display: none; }
+.no-csspointerevents .nice-select .list {display: none;}
 
 .no-csspointerevents .nice-select.open .list {
   display: block; }

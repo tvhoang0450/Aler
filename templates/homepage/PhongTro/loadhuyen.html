@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <option value="">---------</option>
+    {% for huyen in quanhuyens %}
+    <option value="{{ huyen.pk }}">{{ huyen.TenHuyen }}</option>
+    {% endfor %}
+
+    <div class="cotainer">
+                                        {{ form.as_p }}
+                                    <input type="submit" />
+    </div>
+
+</body>
+</html>
+

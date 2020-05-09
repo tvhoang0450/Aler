@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
@@ -130,7 +130,6 @@
     </section>-->
 
     <!-- Hero Section End -->
-
     <!-- Search Section Begin -->
     <section class="search-section spad">
         <div class="container">
@@ -157,16 +156,16 @@
                     </div>
                 </div>
             </div>
-            <div class="search-form-content">
+            <div class="">
                 <!-- Hiện thị bộ lọc tìm kiếm -->
                 {% load widget_tweaks %}
-                <form method="get" class="border p-3">
+                <form method="get" class="filter-form" id="phongtroForm" enctype="multipart/form-data" data-cities-url="{% url 'PhongTro:ajax_load_cities' %}" novalidate>
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-4">
-                                <label for="">Dich Vu</label>
+                                <label for="">Dịch vụ</label>
                                 <br>
-                                {% render_field form.DichVu class="form-control" %}
+                                {% render_field form.DichVu class="form-control"%}
                             </div>
                             <div class="col-lg-4">
                                 <label for="">Tinh thành phố</label>
@@ -176,7 +175,7 @@
                             <div class="col-lg-4">
                                 <label for="">Quận huyện</label>
                                 <br>
-                                {% render_field form.HuyenQuan class="form-control" %}
+                                {% render_field form.HuyenQuan class="form-control"%}
                             </div>
                         </div>
                         <br>
@@ -191,95 +190,9 @@
                             </div>
                         </div>
                     </div>
-
                     <hr class="mb-4">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Tìm kiếm</button>
                 </form>
-            </div>
-            <div class="more-option">
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-heading active">
-                            <a data-toggle="collapse" data-target="#collapseOne">
-                                More Search Options
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="mo-list">
-                                    <div class="ml-column">
-                                        <label for="air">Air conditioning
-                                            <input type="checkbox" id="air">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="lundry">Laundry
-                                            <input type="checkbox" id="lundry">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="refrigerator">Refrigerator
-                                            <input type="checkbox" id="refrigerator">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="washer">Washer
-                                            <input type="checkbox" id="washer">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column">
-                                        <label for="barbeque">Barbeque
-                                            <input type="checkbox" id="barbeque">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="lawn">Lawn
-                                            <input type="checkbox" id="lawn">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="sauna">Sauna
-                                            <input type="checkbox" id="sauna">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="wifi">Wifi
-                                            <input type="checkbox" id="wifi">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column">
-                                        <label for="dryer">Dryer
-                                            <input type="checkbox" id="dryer">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="microwave">Microwave
-                                            <input type="checkbox" id="microwave">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="pool">Swimming Pool
-                                            <input type="checkbox" id="pool">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="window">Window Coverings
-                                            <input type="checkbox" id="window">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column last-column">
-                                        <label for="gym">Gym
-                                            <input type="checkbox" id="gym">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="shower">OutdoorShower
-                                            <input type="checkbox" id="shower">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="tv">Tv Cable
-                                            <input type="checkbox" id="tv">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -321,6 +234,7 @@
         <!--phân trang-->
 
 <!--//////////////////////////////////////////////////////////////////-->
+
     <!-- Property Section Begin -->
     <section class="property-section latest-property-section spad">
         <div class="container">
@@ -485,10 +399,31 @@
     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/mixitup.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+
     <script src="{% static 'js/jquery.slicknav.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/jquery.richtext.min.js' %}"></script>
     <script src="{% static 'js/image-uploader.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+                $("#id_TinhTP").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-cities-url");
+                  var tinhtpId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'TinhTP': tinhtpId
+                      },
+                    success: function (data) {
+                      $("#id_HuyenQuan").html(data);
+                    }
+                  });
+                });
+        });
+    </script>
+
     {% endblock %}

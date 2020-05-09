@@ -7,4 +7,6 @@ urlpatterns = [
     path('add/', views.save_news_class.as_view(), name='add'),
     path('gets/', views.getAll.as_view(), name='getall'),
     path('detail/<int:PhongTro_id>', views.getdetail.as_view(), name='detail'),
+
+    path('ajax/load-huyen/', views.load_huyen, name='ajax_load_cities')
 ]

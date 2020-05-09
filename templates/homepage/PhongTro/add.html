@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>TÌM PHÒNG TRỌ</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+$(document).ready(function(){
+        $("#id_TinhTP").change(function () {
+
+          var url = $("#phongtroForm").attr("data-cities-url");
+          var tinhtpId = $(this).val();
+
+          $.ajax({
+            url: url,
+            data: {
+              'TinhTP': tinhtpId
+              },
+            success: function (data) {
+              $("#id_HuyenQuan").html(data);
+            }
+          });
+        });
+});
+</script>
 </head>
 <body>
-    <form action="{% url 'PhongTro:add'%}" method="POST" enctype="multipart/form-data">
+    <form id="phongtroForm" action="{% url 'PhongTro:add'%}" method="POST" enctype="multipart/form-data" data-cities-url="{% url 'PhongTro:ajax_load_cities' %}" novalidate>
         {% csrf_token %}
 <!--        <p>Mã dịch vụ {{ f.DichVu }}</p>
         <p>Mã tỉnh {{ f.TinhTP}}</p>
@@ -22,5 +42,17 @@
         {{ f.as_p}}
         <p><input type="submit" value="Thêm"></p>
     </form>
+
+
+      <script>
+
+      </script>
+
+<h2>This is a heading</h2>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<button>Click me</button>
 </body>
 </html>
