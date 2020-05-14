@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="property-submit-form">
-                        <form action="#">
+                        <form id="phongtroForm" action="{% url 'PhongTro:add'%}" method="POST" enctype="multipart/form-data" data-districts-url="{% url 'PhongTro:ajax_load_districts' %}" data-wards-url="{% url 'PhongTro:ajax_load_wards' %}" data-streets-url="{% url 'PhongTro:ajax_load_streets' %}" novalidate>
                             <div class="pf-title">
                                 <h4>Tiêu đề</h4>
                                 {{ f.TieuDe }}
@@ -57,11 +57,13 @@
                                 </ul>
                                 <textarea class="texteditor-content" name="example" id="id_NoiDung"></textarea>
                             </div>
-                            <div class="pf-location">
+                            <div class="">
                                 <h4>Địa Điểm cho thuê</h4>
-                                <div class="location-inputs">
-                                    {{ f.TinhTP }}
-                                    {{ f.HuyenQuan }}
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-6">{{ f.TinhTP }}</div>
+                                        <div class="col-6">{{ f.HuyenQuan }}</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="pf-map">
@@ -248,6 +250,57 @@
     <script src="{% static 'js/jquery.richtext.min.js' %}"></script>
     <script src="{% static 'js/image-uploader.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+                $("#id_province").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-districts-url");
+                  var tinhtpId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'province': tinhtpId
+                      },
+                    success: function (data) {
+                      $("#id_district").html(data);
+                    }
+                  });
+                });
+
+                $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-wards-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_ward").html(data);
+                    }
+                  });
+                });
+
+                 $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-streets-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_street").html(data);
+                    }
+                  });
+                });
+        });
+    </script>
 
     {% endblock %}

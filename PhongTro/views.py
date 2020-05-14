@@ -7,7 +7,7 @@ from .models import PhongTro
 
 from .forms import PhongTroForm
 from .filters import PhongTroFilter
-from HuyenQuan.models import HuyenQuan
+from DiaChi.models import district, province, ward, street
 
 
 def index(request):
@@ -20,7 +20,8 @@ class save_news_class(LoginRequiredMixin, View):
 
     def get(self, request):
         a = PhongTroForm()
-        return render(request, 'homepage/PhongTro/property-submit.html', {'f': a})
+        #return render(request, 'homepage/PhongTro/property-submit.html', {'f': a})
+        return render(request, 'homepage/PhongTro/add.html', {'f': a})
 
     def post(self, request):
         g = PhongTroForm(request.POST, request.FILES)
@@ -52,8 +53,19 @@ class getdetail(View):
 
 
 def load_huyen(request):
-    tinhtp_id = request.GET.get('TinhTP')
-    quanhuyens = HuyenQuan.objects.filter(TinhTP_id=tinhtp_id).order_by('TenHuyen')
-    print(quanhuyens)
+    tinhtp_id = request.GET.get('province')
+    districts = district.objects.filter(_province_id=tinhtp_id).order_by('_name')
+    return render(request, 'homepage/PhongTro/loadhuyen.html', {'districts': districts})
+
+
+def load_xa(request):
+    tinhtp_id = request.GET.get('district')
+    wards = ward.objects.filter(_district_id=tinhtp_id).order_by('_name')
+    return render(request, 'homepage/PhongTro/loadxa.html', {'wards': wards})
+
+
+def load_duong(request):
+    tinhtp_id = request.GET.get('district')
     print(tinhtp_id)
-    return render(request, 'homepage/PhongTro/loadhuyen.html', {'quanhuyens': quanhuyens})
+    streets = street.objects.filter(_district_id=tinhtp_id).order_by('_name')
+    return render(request, 'homepage/PhongTro/loadduong.html', {'streets': streets})

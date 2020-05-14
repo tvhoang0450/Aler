@@ -159,34 +159,48 @@
             <div class="">
                 <!-- Hiện thị bộ lọc tìm kiếm -->
                 {% load widget_tweaks %}
-                <form method="get" class="filter-form" id="phongtroForm" enctype="multipart/form-data" data-cities-url="{% url 'PhongTro:ajax_load_cities' %}" novalidate>
+                <form method="get" class="filter-form" id="phongtroForm" enctype="multipart/form-data" data-districts-url="{% url 'PhongTro:ajax_load_districts' %}" data-wards-url="{% url 'PhongTro:ajax_load_wards' %}" data-streets-url="{% url 'PhongTro:ajax_load_streets' %}" novalidate>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <label for="">Dịch vụ</label>
                                 <br>
                                 {% render_field form.DichVu class="form-control"%}
                             </div>
-                            <div class="col-lg-4">
-                                <label for="">Tinh thành phố</label>
+                            <div class="col-lg-2">
+                                <label for="">Tỉnh thành phố</label>
                                  <br>
-                                {% render_field form.TinhTP class="form-control" %}
+                                {% render_field form.province class="form-control" %}
                             </div>
-                            <div class="col-lg-4">
-                                <label for="">Quận huyện</label>
+                            <div class="col-lg-2">
+                                <label for="">Quận/Huyện</label>
                                 <br>
-                                {% render_field form.HuyenQuan class="form-control"%}
+                                {% render_field form.district class="form-control"%}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Xã/Phường</label>
+                                <br>
+                                {% render_field form.ward class="form-control"%}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Đường</label>
+                                <br>
+                                {% render_field form.street class="form-control"%}
+                            </div>
+                            <div class="col-md-2">
+                                    <label for="">Diện tích</label>
+                                    {% render_field form.DienTich class="custom-select d-block w-100" %}
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="">Mức giá</label>
-                                {% render_field form.Gia class="custom-select d-block w-100" placeholder="Giá tối đa" %}
+                                <label for="">Mức giá nhỏ nhất</label>
+                                {% render_field form.Gia__lt class="custom-select d-block w-100" placeholder="Giá tối thiểu" %}
                             </div>
                             <div class="col-md-6">
-                                    <label for="">Diện tích</label>
-                                    {% render_field form.DienTich class="custom-select d-block w-100" %}
+                                    <label for="">Mức giá lớn nhất</label>
+                                    {% render_field form.Gia__gt class="custom-select d-block w-100" placeholder="Giá tối đa"  %}
                             </div>
                         </div>
                     </div>
@@ -198,40 +212,6 @@
     </section>
     <!-- Search Section End -->
 
-   <!-- hien thi tim kiem-->
-<!--    <div class="container">
-        <div class="row">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Dich Vu</th>
-                        <th>Tỉnh</th>
-                        <th>Huyên</th>
-                        <th>Giá (VNĐ)</th>
-                        <th>Miêu tả</th>
-                        <th>Dien Tich</th>
-                        <th>Tieu đề</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for phongtro in PhongTros %}
-                    <tr>
-                        <td>{{ phongtro.DichVu }}</td>
-                        <td>{{ phongtro.TinhTP}}</td>
-                        <td>{{ phongtro.HuyenQuan }}</td>
-                        <td>{{ phongtro.Gia }}</td>
-                        <td>{{ phongtro.NoiDung }}</td>
-                        <td><img src="{{ phongtro.Anh.url }}"></td>
-                        <td>{{ phongtro.DienTich }}</td>
-                        <td>{{ phongtro.TieuDe }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>-->
-
-        <!--phân trang-->
 
 <!--//////////////////////////////////////////////////////////////////-->
 
@@ -408,18 +388,50 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         $(document).ready(function(){
-                $("#id_TinhTP").change(function () {
+                $("#id_province").change(function () {
 
-                  var url = $("#phongtroForm").attr("data-cities-url");
+                  var url = $("#phongtroForm").attr("data-districts-url");
                   var tinhtpId = $(this).val();
 
                   $.ajax({
                     url: url,
                     data: {
-                      'TinhTP': tinhtpId
+                      'province': tinhtpId
                       },
                     success: function (data) {
-                      $("#id_HuyenQuan").html(data);
+                      $("#id_district").html(data);
+                    }
+                  });
+                });
+
+                $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-wards-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_ward").html(data);
+                    }
+                  });
+                });
+
+                 $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-streets-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_street").html(data);
                     }
                   });
                 });

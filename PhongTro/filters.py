@@ -2,27 +2,17 @@ from django import forms
 
 import django_filters
 from .models import PhongTro
-from HuyenQuan.models import HuyenQuan
-from TinhTP.models import TinhTP
 
-
-def huyenquans(request):
-    if request is None:
-        return HuyenQuan.objects.none()
-
-    TinhTP = request.user.TinhTP
-    return TinhTP.huyenquan_set.all()
 
 
 class PhongTroFilter(django_filters.FilterSet):
-    Gia = django_filters.NumberFilter()
     Gia__gt = django_filters.NumberFilter(field_name='Gia', lookup_expr='gt')
-    Gia__lt = django_filters.NumberFilter(field_name='Gia   ', lookup_expr='lt')
+    Gia__lt = django_filters.NumberFilter(field_name='Gia', lookup_expr='lt')
     DienTich = django_filters.NumberFilter(lookup_expr='lte')
 
     class Meta:
         model = PhongTro
-        fields = ('DichVu', 'TinhTP', 'HuyenQuan', 'Gia', 'DienTich')
+        fields = ('DichVu', 'province', 'district', 'ward', 'street', 'DienTich')
 
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)

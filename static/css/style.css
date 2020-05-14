@@ -2287,6 +2287,7 @@ ol {
 .property-submit-form form .pf-location .location-inputs input {
   width: calc(33.33% - 20px);
   float: left;
+  float: left;
   margin-right: 20px;
   margin-bottom: 20px;
 }
