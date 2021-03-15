@@ -1,0 +1,106 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block cssblock %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/elegant-icons.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 style="text-align: center;">Thông tin cá nhân</h2>
+    <br>
+    <div style="display: inline-block;">
+        <label for="" style="">Tên đăng nhập: </label>
+        <input disabled style="width: 700px; text-align: center; margin-left: 100px;" type="text"
+               value="{{ user.username }}">
+    </div>
+    <br><br>
+    <div style="display: inline-block;">
+        <label for="" style="">Email: </label>
+        <input style="width: 700px; text-align: center; margin-left: 172px;" type="text" value="{{ user.email }}">
+    </div>
+    <br><br>
+    <div style="display: inline-block;">
+        <label for="">Địa chỉ: </label>
+        <input style="width: 700px; text-align: center; margin-left: 165px;" type="text" value="{{ user.DiaChi }}">
+    </div>
+    <br><br>
+    <div style="display: inline-block;">
+        <label for="">Ngày Sinh: </label>
+        <input style="width: 700px; text-align: center; margin-left: 135px;" type="text" value="{{ user.NgaySinh }}">
+    </div>
+    <br><br>
+    <div style="display: inline-block;">
+        <label for="">Giới tính: </label>
+        <input style="width: 700px; text-align: center; margin-left: 150px;" type="text" value="{{ user.GioiTinh }}">
+    </div>
+    <br><br>
+    <a href="{% url 'NguoiDung:update' user.id %}"><input style="background-color: green;" type="button">Sửa đổi</input>
+    </a>
+</div>
+<div class="container">
+    <h2>TIN ĐÃ ĐĂNG</h2>
+    {% for item in dsach_tin_dang %}
+    <div class="container mt-2 mb-5">
+        <div class="row">
+            <div class="w-100  col-11">
+                <div class="media">
+                    <img alt="Generic placeholder image" class="ml-3" src="{{ item.Anh.url }}"
+                         style="width: 150px; height: 106px;">
+                    <div class="media-body ml-1 w-100 border" style="height: 106px">
+                        <strong><a class="mt-0 mb-1 ml-2" href="{% url 'PhongTro:detail' item.id%}">{{ item.TieuDe }}</a></strong>
+                        <br>
+                        <strong class="mt-0 mb-1 ml-2" style="color: #37a344;"> Dịch vụ: {{ item.DichVu }}</strong>
+                        <h6 class="mt-0 mb-1 ml-2">Địa chỉ: {{ item.street }},{{ item.ward }},{{ item.district }},{{ item.province }}</h6>
+                        <strong class="mt-0 mb-1 ml-2">{{ item.Gia }} vnd/tháng</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 mt-4">
+                <a href="{% url 'PhongTro:phongtro_edit' item.id %}">
+                    <svg class="bi bi-pencil-square" fill="currentColor" height="1em" viewBox="0 0 16 16"
+                         width="1em"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                              fill-rule="evenodd"/>
+                    </svg>
+                </a>
+                <br>
+                <a href="{% url 'PhongTro:phongtro_delete' item.id %}">
+                    <svg class="bi bi-trash" fill="currentColor" height="1em" viewBox="0 0 16 16" width="1em"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                              fill-rule="evenodd"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block jsblock %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+<script src="{% static 'js/image-uploader.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

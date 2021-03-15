@@ -1,0 +1,37 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block cssblock %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/elegant-icons.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/richtext.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/image-uploader.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Đăng">
+</form>
+{% endblock %}
+{% block jsblock %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+<script src="{% static 'js/image-uploader.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{% endblock %}

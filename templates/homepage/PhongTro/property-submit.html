@@ -1,0 +1,336 @@
+{% extends 'homepage/base.html' %}
+{% load param_replace %}
+{% load static %}
+
+{% block cssblock %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/elegant-icons.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/richtext.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/image-uploader.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<section class="breadcrumb-section spad set-bg" data-setbg="{% static 'img/breadcrumb-bg.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <h4>Đăng tin mới</h4>
+                    <div class="bt-option">
+                        <a href="/"><i class="fa fa-home"></i> Trang chủ</a>
+                        <span>Đăng tin cho thuê</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Property Submit Section Begin -->
+<section class="property-submit-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="property-submit-form">
+                    <form action="{% url 'PhongTro:add'%}" data-districts-url="{% url 'PhongTro:ajax_load_districts' %}" data-streets-url="{% url 'PhongTro:ajax_load_streets' %}" data-wards-url="{% url 'PhongTro:ajax_load_wards' %}"
+                          enctype="multipart/form-data"
+                          id="phongtroForm"
+                          method="POST" novalidate>
+                        <div class="pf-title">
+                            <h4>Tiêu đề</h4>
+                            {{ postForm.TieuDe }}
+                        </div>
+                        <div class="pf-summernote">
+                            <h4>Nội dung</h4>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link texteditor-switch" data-toggle="tab" href="#tabs-1" role="tab">Text</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link texteditor-switch active" data-toggle="tab" href="#tabs-2"
+                                       role="tab">Visual</a>
+                                </li>
+                            </ul>
+                            <!--                                <textarea class="texteditor-content" name="example" id="id_NoiDung"></textarea>-->
+                            {{ postForm.NoiDung }}
+                        </div>
+                        <div class="">
+                            <h4>Địa Điểm cho thuê</h4>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            Tỉnh/Thành Phố:
+                                            <div>{{postForm.province}}</div>
+                                        </div>
+                                        <br><br><br>
+                                        <div>
+                                            Xã/Phường:
+                                            <div>{{postForm.ward}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div>
+                                            Quận/Huyện:
+                                            <div>{{postForm.district}}</div>
+                                        </div>
+                                        <br><br><br>
+                                        <div>
+                                            Đường:
+                                            <div>{{postForm.street}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="pf-map">
+                            <h4>Goolge Map</h4>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="map-inputs">
+                                        <div class="col-6">Tỉnh</div>
+                                        <div class="col-6">{{ postForm.province }}</div>
+                                        <input placeholder="Latitude" type="text">
+                                        <input placeholder="Longitude" type="text">
+                                        <input placeholder="Street View" type="text">
+                                    </div>
+                                    <button class="site-btn" type="button">PPlace the pin the address above</button>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="g-map">
+                                        <iframe allowfullscreen=""
+                                                height="245" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd" style="border:0;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf-type">
+                            <h4>Property type</h4>
+                            <div class="type-item">
+                                <label for="pt-apart">Apartment
+                                    <input id="pt-apart" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="pt-house">House
+                                    <input id="pt-house" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="pt-off">Office
+                                    <input id="pt-off" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="pt-villa">Villa
+                                    <input id="pt-villa" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="pt-store">Store
+                                    <input id="pt-store" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="pt-rest">Resturent
+                                    <input id="pt-rest" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pf-status">
+                            <h4>Property status</h4>
+                            <div class="status-item">
+                                <label for="ps-rent">For rent
+                                    <input id="ps-rent" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                                <label for="ps-sale">For sale
+                                    <input id="ps-sale" type="checkbox">
+                                    <span class="checkbox"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pf-feature-price">
+                            <h4>Featured Price</h4>
+                            <div class="fp-inputs">
+                                <input placeholder="Price" type="text">
+                                <input placeholder="Second Price ( Optional )" type="text">
+                                <input placeholder="After Price Label (ex: monthly)" type="text">
+                            </div>
+                        </div>
+                        <div class="pf-feature">
+                            <h4>Property Features</h4>
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <label for="air">Air conditioning
+                                        <input id="air" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="lundry">Laundry
+                                        <input id="lundry" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="refrigerator">Refrigerator
+                                        <input id="refrigerator" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="washer">Washer
+                                        <input id="washer" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                </div>
+                                <div class="feature-item">
+                                    <label for="barbeque">Barbeque
+                                        <input id="barbeque" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="lawn">Lawn
+                                        <input id="lawn" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="sauna">Sauna
+                                        <input id="sauna" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="wifi">Wifi
+                                        <input id="wifi" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                </div>
+                                <div class="feature-item">
+                                    <label for="dryer">Dryer
+                                        <input id="dryer" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="microwave">Microwave
+                                        <input id="microwave" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="pool">Swimming Pool
+                                        <input id="pool" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="window">Window Coverings
+                                        <input id="window" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                </div>
+                                <div class="feature-item">
+                                    <label for="gym">Gym
+                                        <input id="gym" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="shower">OutdoorShower
+                                        <input id="shower" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="tv">Tv Cable
+                                        <input id="tv" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                    <label for="villa">Villa
+                                        <input id="villa" type="checkbox">
+                                        <span class="checkbox"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf-feature-image">
+                            <h4>Featured Image</h4>
+                            <div class="feature-image-content"></div>
+                        </div>
+                        <div class="pf-property-details">
+                            <h4>Property details</h4>
+                            <div class="property-details-inputs">
+                                <input placeholder="Property ID" type="text">
+                                <input placeholder="Area Size ( Only digits )" type="text">
+                                <input placeholder="Size Prefix" type="text">
+                                <input placeholder="Bedrooms" type="text">
+                                <input placeholder="Bathrooms" type="text">
+                                <input placeholder="Garages" type="text">
+                                <input placeholder="Garages Size" type="text">
+                                <input placeholder="Year Built" type="text">
+                                <input placeholder="Virtual Tour Video URL" type="text">
+                            </div>
+                            <button class="site-btn" type="submit">Submit Property</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block jsblock %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+<script src="{% static 'js/image-uploader.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+        $(document).ready(function(){
+                $("#id_province").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-districts-url");
+                  var tinhtpId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'province': tinhtpId
+                      },
+                    success: function (data) {
+                      $("#id_district").html(data);
+                    }
+                  });
+                });
+
+                $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-wards-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_ward").html(data);
+                    }
+                  });
+                });
+
+                 $("#id_district").change(function () {
+
+                  var url = $("#phongtroForm").attr("data-streets-url");
+                  var huyenId = $(this).val();
+
+                  $.ajax({
+                    url: url,
+                    data: {
+                      'district': huyenId
+                      },
+                    success: function (data) {
+                      $("#id_street").html(data);
+                    }
+                  });
+                });
+        });
+
+</script>
+
+{% endblock %}

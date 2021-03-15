@@ -1,0 +1,165 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+
+<!-- Css Styles -->
+{% block cssblock %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/elegant-icons.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/jquery-ui.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/nice-select.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+<!-- Property Details Section Begin -->
+<section class="property-details-section">
+    <div class="property-pic-slider owl-carousel">
+        {% for img in p.images_set.all %}
+        <div class="hs-item set-bg" data-setbg="{{ img.image.url }}" style="width: 100%;">
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pd-text">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="pd-title">
+                                <a class="heart-icon" href="#"><span class="icon_heart_alt"></span></a>
+                                <div class="label">{{ p.DichVu }}</div>
+                                <div class="pt-price">{{ p.Gia }}<span>/tháng</span></div>
+                                <h3>{{ p.TieuDe }}</h3>
+                                <p><span class="icon_pin_alt"></span> {{ p.DiaChi }}, {{ p.street }}, {{ p.ward }}, {{ p.district }}, {{ p.province }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="pd-social">
+                                <a href="#"><i class="fa fa-mail-forward"></i></a>
+                                <a href="#"><i class="fa fa-send"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-mail-forward"></i></a>
+                                <a href="#"><i class="fa fa-cloud-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-board">
+                        <div class="tab-board">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Tổng quan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Mô tả</a>
+                                </li>
+
+                            </ul><!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="tab-details">
+                                        <ul class="left-table">
+                                            <li>
+                                                <span class="type-name">Loại dịch vụ</span>
+                                                <span class="type-value">{{ p.DichVu }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="type-name">Tin ID</span>
+                                                <span class="type-value">#{{ p.id }}</span>
+                                            </li>
+                                                                                        <li>
+                                                <span class="type-name">Người đăng</span>
+                                                <span class="type-value">{{ p.NguoiDung }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="type-name">Giá</span>
+                                                <span class="type-value">{{ p.Gia }}/tháng</span>
+                                            </li>
+                                        </ul>
+                                        <ul class="right-table">
+                                            <li>
+                                                <span class="type-name">Ngày đăng</span>
+                                                <span class="type-value">{{ p.NgayDang }}</span>
+                                            </li>
+                                                                                        <li>
+                                                <span class="type-name">Ngày cập nhật</span>
+                                                <span class="type-value">{{ p.NgayCapNhat }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="type-name">Liên hệ</span>
+                                                <span class="type-value">0{{ p.SDT }}</span>
+                                            </li>
+                                            <li>
+                                                <span class="type-name">Diện tích</span>
+                                                <span class="type-value">{{ p.DienTich }}  (m2)</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    <div class="tab-desc">
+                                        <p>{{ p.NoiDung }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-widget">
+                        <h4>Bản đồ</h4>
+                        <div class="map">
+                            <iframe allowfullscreen=""
+                                    height="350"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
+                                    style="border:0;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+<!-- Page Preloder -->
+
+
+<!-- Offcanvas Menu Wrapper Begin -->
+
+<!-- Offcanvas Menu Wrapper End -->
+
+<!-- Header Section Begin -->
+<!-- Header End -->
+
+
+<!-- Property Details Section End -->
+
+<!-- Contact Section Begin -->
+
+<!-- Contact Section End -->
+
+<!-- Footer Section Begin -->
+<!-- Footer Section End -->
+
+<!-- Js Plugins -->
+{% block jsblock %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+<script src="{% static 'js/image-uploader.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{% endblock %}

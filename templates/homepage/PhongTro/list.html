@@ -1,0 +1,23 @@
+{% extends 'PhongTro/base.html' %}
+
+    {% block content %}
+        <div>
+            {% if list %}
+                <h1>Danh sách phòng trọ:</h1>
+                {% for item in list %}
+                    <div class="container">
+                      <div class="row">
+                          <div class="">
+                              <a href="/PhongTro/detail/{{item.id}}"><h3>{{ item.TieuDe }}</h3></a>
+                              <img src="{{ item.Anh.url }}" alt="{{ item.Anh.url }}" style="width:150px;height:100px;">
+
+                          </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>Không tồn tại Phòng trọ nào</h1>
+            {% endif %}
+        </div>
+
+    {% endblock %}
