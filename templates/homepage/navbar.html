@@ -19,7 +19,11 @@
                                 <a href="{% url 'NguoiDung:login' %}" class="hw-btn">Đăng nhập</a>
                                 <a href="{% url 'NguoiDung:register' %}" class="hw-btn">Đăng ký</a>
                             {% else %}
+<<<<<<< HEAD
                             <a href="{% url 'NguoiDung:profile' user.id %}"><img src="{% static 'img/icons8-user-30.png' %}" alt="" style="position: relative; left: 30px"></a>
+=======
+                            <a href="{% url 'NguoiDung:profile'  %}"><img src="{% static 'img/icons8-user-30.png' %}" alt="" style="position: relative; left: 30px"></a>
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
                             {% endif %}
                         </div>
                     </div>

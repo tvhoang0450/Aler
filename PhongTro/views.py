@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import modelformset_factory
@@ -10,11 +11,24 @@ from django.views.generic import UpdateView, DeleteView
 from DiaChi.models import district, ward, street
 from .forms import PhongTroForm, ImageForm
 from .models import PhongTro, Images
+=======
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth import decorators, authenticate, login
+from django.views import View
+from .models import PhongTro
+
+from .forms import PhongTroForm
+from .filters import PhongTroFilter
+from DiaChi.models import district, province, ward, street
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
 
 def index(request):
     return HttpResponse("Xin chào")
 
+<<<<<<< HEAD
     # Create your views here.
 
 
@@ -61,6 +75,25 @@ def post(request):
                   {'postForm': form, 'formset': formset})
     # return render(request, 'homepage/PhongTro/property-submit.html',
     #               {'postForm': form, 'formset': formset})
+=======
+
+# Create your views here.
+class save_news_class(LoginRequiredMixin, View):
+    login_url = '/NguoiDung/login/'
+
+    def get(self, request):
+        a = PhongTroForm()
+        #return render(request, 'homepage/PhongTro/property-submit.html', {'f': a})
+        return render(request, 'homepage/PhongTro/add.html', {'f': a})
+
+    def post(self, request):
+        g = PhongTroForm(request.POST, request.FILES)
+        if g.is_valid():
+            g.save()
+            return HttpResponse(g)
+        else:
+            return HttpResponse("Không lưu được validate")
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
 
 class getAll(View):
@@ -77,6 +110,7 @@ class getAll(View):
             return HttpResponse("Không lưu được validate")
 
 
+<<<<<<< HEAD
 class PhongTroUpdate(UpdateView):
     model = PhongTro
     fields = (
@@ -95,6 +129,12 @@ class PhongTroDelete(DeleteView):
     model = PhongTro
     # success_url = reverse_lazy('NguoiDung:profile')
     success_url = "/NguoiDung/profile/{NguoiDung_id}"
+=======
+class getdetail(View):
+    def get(self, request, PhongTro_id):
+        p = PhongTro.objects.get(pk=PhongTro_id)
+        return HttpResponse(p)
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
 
 def load_huyen(request):

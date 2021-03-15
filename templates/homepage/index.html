@@ -2,6 +2,7 @@
 {% load param_replace %}
 {% load static %}
 
+<<<<<<< HEAD
 {% block cssblock %}
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -139,10 +140,222 @@
     </div>
 </section>
 <!-- Search Section End -->
+=======
+    {% block cssblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    {% endblock %}
+
+    {% block content %}
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Offcanvas Menu Wrapper Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <span class="icon_close"></span>
+        </div>
+<!--        <div class="logo">
+            <a href="/">
+                <img src="{% static 'img/logo.png' %}" alt="">
+            </a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="om-widget">
+            <ul>
+                <li><i class="icon_mail_alt"></i> Aler.support@gmail.com</li>
+                <li><i class="fa fa-mobile-phone"></i> 125-711-811 <span>125-668-886</span></li>
+            </ul>
+            <a href="#" class="hw-btn">Submit property</a>
+        </div>
+        <div class="om-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube-play"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>-->
+    </div>
+    <!-- Offcanvas Menu Wrapper End -->
+
+    <!-- Header Section Begin -->
+
+    <!-- Header End -->
+
+    <!-- Hero Section Begin -->
+
+<!--    <section class="hero-section">
+        <div class="container">
+            <div class="hs-slider owl-carousel">
+                {% for phongtro in list %}
+                <div class="hs-item set-bg" data-setbg="{{ phongtro.Anh.url }}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hc-inner-text">
+                                <div class="hc-text">
+                                    <h4>{{ phongtro.TieuDe }}</h4>
+                                    <p><span class="icon_pin_alt"></span> {{ phongtro.HuyenQuan }}, {{ phongtro.TinhTP }}</p>
+                                    <div class="label">Cho thuê</div>
+                                    <h5>{{ phongtro.Gia }}<span>/tháng</span></h5>
+                                </div>
+                                <div class="hc-widget">
+                                    <ul>
+                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
+                                        <li><i class="fa fa-bathtub"></i> 03</li>
+                                        <li><i class="fa fa-bed"></i> 05</li>
+                                        <li><i class="fa fa-automobile"></i> 01</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+&lt;!&ndash;                <div class="hs-item set-bg" data-setbg="{% static 'img/hero/hero-2.jpg' %}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hc-inner-text">
+                                <div class="hc-text">
+                                    <h4>Balaji Symphony</h4>
+                                    <p><span class="icon_pin_alt"></span> Panvel, Navi Mumbai</p>
+                                    <div class="label">For Rent</div>
+                                    <h5>$ 65.0<span>/month</span></h5>
+                                </div>
+                                <div class="hc-widget">
+                                    <ul>
+                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
+                                        <li><i class="fa fa-bathtub"></i> 03</li>
+                                        <li><i class="fa fa-bed"></i> 05</li>
+                                        <li><i class="fa fa-automobile"></i> 01</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hs-item set-bg" data-setbg="{% static 'img/hero/hero-3.jpg' %}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="hc-inner-text">
+                                <div class="hc-text">
+                                    <h4>Balaji Symphony</h4>
+                                    <p><span class="icon_pin_alt"></span> Panvel, Navi Mumbai</p>
+                                    <div class="label">For Rent</div>
+                                    <h5>$ 65.0<span>/month</span></h5>
+                                </div>
+                                <div class="hc-widget">
+                                    <ul>
+                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
+                                        <li><i class="fa fa-bathtub"></i> 03</li>
+                                        <li><i class="fa fa-bed"></i> 05</li>
+                                        <li><i class="fa fa-automobile"></i> 01</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>&ndash;&gt;
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Hero Section End -->
+    <!-- Search Section Begin -->
+    <section class="search-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="section-title">
+                        <h4>Yêu cầu tìm kiếm</h4>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="change-btn">
+                        <div class="cb-item">
+                            <label for="cb-rent" class="active">
+                                For Rent
+                                <input type="radio" id="cb-rent">
+                            </label>
+                        </div>
+                        <div class="cb-item">
+                            <label for="cb-sale">
+                                For Sale
+                                <input type="radio" id="cb-sale">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <!-- Hiện thị bộ lọc tìm kiếm -->
+                {% load widget_tweaks %}
+                <form method="get" class="filter-form" id="phongtroForm" enctype="multipart/form-data" data-districts-url="{% url 'PhongTro:ajax_load_districts' %}" data-wards-url="{% url 'PhongTro:ajax_load_wards' %}" data-streets-url="{% url 'PhongTro:ajax_load_streets' %}" novalidate>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label for="">Dịch vụ</label>
+                                <br>
+                                {% render_field form.DichVu class="form-control"%}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Tỉnh thành phố</label>
+                                 <br>
+                                {% render_field form.province class="form-control" %}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Quận/Huyện</label>
+                                <br>
+                                {% render_field form.district class="form-control"%}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Xã/Phường</label>
+                                <br>
+                                {% render_field form.ward class="form-control"%}
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="">Đường</label>
+                                <br>
+                                {% render_field form.street class="form-control"%}
+                            </div>
+                            <div class="col-md-2">
+                                    <label for="">Diện tích</label>
+                                    {% render_field form.DienTich class="custom-select d-block w-100" %}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">Mức giá nhỏ nhất</label>
+                                {% render_field form.Gia__lt class="custom-select d-block w-100" placeholder="Giá tối thiểu" %}
+                            </div>
+                            <div class="col-md-6">
+                                    <label for="">Mức giá lớn nhất</label>
+                                    {% render_field form.Gia__gt class="custom-select d-block w-100" placeholder="Giá tối đa"  %}
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Search Section End -->
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
 
 <!--//////////////////////////////////////////////////////////////////-->
 
+<<<<<<< HEAD
 <!-- Property Section Begin -->
 <section class="property-section latest-property-section spad">
     <div class="container">
@@ -195,11 +408,62 @@
                                 </div>
                                 <div class="pa-text">
                                     SĐT: {{ item.SDT }}
+=======
+    <!-- Property Section Begin -->
+    <section class="property-section latest-property-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="section-title">
+                        <h4>Tin nổi bật</h4>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="property-controls">
+                        <ul>
+                            <li data-filter="all">Tất cả</li>
+                            <li data-filter=".apart">Nhà trọ</li>
+                            <li data-filter=".house">Căn hộ</li>
+                            <li data-filter=".office">Mặt bằng</li>
+                            <li data-filter=".hotel">Tìm  người ở ghép</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row property-filter">
+                {% for item in orders %}
+                <div class="col-lg-4 col-md-6 mix all house">
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="{{ item.Anh.url }}">
+                            <div class="label">For rent</div>
+                        </div>
+                        <div class="pi-text">
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <div class="pt-price">$ {{ item.Gia }}<span>/month</span></div>
+                            <h5><a href="/PhongTro/detail/{{item.id}}">{{ item.TieuDe }}</a></h5>
+                            <p><span class="icon_pin_alt"></span> {{ item.DiaChi }}</p>
+                            <ul>
+                                <li><i class="fa fa-object-group"></i> 2, 283</li>
+                                <li><i class="fa fa-bathtub"></i> 03</li>
+                                <li><i class="fa fa-bed"></i> 05</li>
+                                <li><i class="fa fa-automobile"></i> 01</li>
+                            </ul>
+                            <div class="pi-agent">
+                                <div class="pa-item">
+                                    <div class="pa-info">
+                                        <img src="{% static 'img/property/posted-by/pb-1.jpg' %}" alt="">
+                                        <h6>{{ item.NguoiDung }}</h6>
+                                    </div>
+                                    <div class="pa-text">
+                                        SĐT: {{ item.SDT }}
+                                    </div>
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
             {% endfor %}
         </div>
@@ -321,6 +585,127 @@
 <script src="{% static 'js/main.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+=======
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h4>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pull-right">
+
+                    {% if orders.has_previous %}
+                    <li><a href="?{% param_replace page=orders.previous_page_number %}">&laquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+
+                    {% if orders.number > 5 %}
+                    <li><a href="?{% param_replace page=1 %}"><i>1</i></a></li>
+                    {% endif %}
+
+                    {% for i in orders.paginator.page_range %}
+                    {% if i > orders.number|add:"-5" %}
+                        {% if i < orders.number|add:"5" %}
+                            {% if orders.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                    <li><a href="?{% param_replace page=i %}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if orders.number < orders.paginator.num_pages|add:"-5" %}
+                    <li><a href="?{% param_replace page=orders.paginator.num_pages %}"><i>{{ orders.paginator.num_pages }}</i></a></li>
+                    {% endif %}
+
+                    {% if orders.has_next %}
+                    <li><a href="?{% param_replace page=orders.next_page_number %}">&raquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </h4>
+    </div>
+    <!-- Property Section End -->
+
+    <!-- Chooseus Section Begin -->
+    {% include "homepage/ChooseusSectionBegin.html" %}
+    <!-- Chooseus Section End -->
+
+    <!-- Feature Property Section Begin -->
+
+    <!-- Feature Property Section End -->
+
+    <!-- Team Section Begin -->
+    <!-- Team Section End -->
+
+    <!-- Categories Section Begin -->
+    {% include "homepage/CategoriesSection.html" %}
+    <!-- Categories Section End -->
+
+    <!-- Testimonial Section Begin -->
+    {% include "homepage/TestimonialSection.html" %}
+    <!-- Testimonial Section End -->
+
+    <!-- Logo Carousel Begin -->
+    <div class="logo-carousel">
+        <div class="container">
+            <div class="lc-slider owl-carousel">
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-1.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-2.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-3.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-4.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-5.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="#" class="lc-item">
+                    <div class="lc-item-inner">
+                        <img src="{% static 'img/logo-carousel/lc-6.png' %}" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block jsblock %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.richtext.min.js' %}"></script>
+    <script src="{% static 'js/image-uploader.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
         $(document).ready(function(){
                 $("#id_province").change(function () {
 
@@ -370,7 +755,13 @@
                   });
                 });
         });
+<<<<<<< HEAD
 
 </script>
 
 {% endblock %}
+=======
+    </script>
+
+    {% endblock %}
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729

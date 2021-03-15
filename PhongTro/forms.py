@@ -1,7 +1,11 @@
 from django import forms
+<<<<<<< HEAD
 from django.forms.widgets import Input
 
 from .models import PhongTro, Images
+=======
+from .models import PhongTro
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
 from DichVu.models import DichVu
 from TinhTP.models import TinhTP
@@ -10,6 +14,7 @@ from HuyenQuan.models import HuyenQuan
 from DiaChi.models import province, district, ward, street
 from NguoiDung.models import NguoiDung
 
+<<<<<<< HEAD
 
 class PhongTroForm(forms.ModelForm):
     NoiDung = forms.CharField(label="", widget=forms.Textarea(
@@ -30,6 +35,13 @@ class PhongTroForm(forms.ModelForm):
         fields = (
             'DichVu', 'TieuDe', 'province', 'district', 'ward', 'street', 'Gia', 'SDT',
             'NoiDung', 'DienTich', 'Anh')
+=======
+class PhongTroForm(forms.ModelForm):
+    class Meta:
+        model = PhongTro
+        fields = ('DichVu','TieuDe','province','district','ward','street','Gia','Anh','NguoiDung','NgayDang','SDT','NoiDung','DienTich')
+
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -38,12 +50,18 @@ class PhongTroForm(forms.ModelForm):
 
         if 'province' in self.data:
             try:
+<<<<<<< HEAD
                 province_id = int(self.data.get('province'))
                 self.fields['district'].queryset = district.objects.filter(_province_id=province_id).order_by('_name')
+=======
+                country_id = int(self.data.get('province'))
+                self.fields['district'].queryset = district.objects.filter(_province_id=country_id).order_by('_name')
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
             except (ValueError, TypeError):
                 pass  # invalid input from the client; ignore and fallback to empty City queryset
         elif self.instance.pk:
             self.fields['district'].queryset = self.instance.province._district_set.order_by('_name')
+<<<<<<< HEAD
 
 
 class ImageForm(forms.ModelForm):
@@ -52,3 +70,5 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Images
         fields = ('image',)
+=======
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729

@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+=======
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
 from django.views import View
+<<<<<<< HEAD
 from django.views.generic import UpdateView
 
 from .models import NguoiDung
 from .forms import NguoiDungForm
 from .models import NguoiDung
+=======
+
+from .models import NguoiDung
+from .forms import NguoiDungForm
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
 from PhongTro.models import PhongTro
 
 
@@ -44,6 +55,7 @@ class ProfileClass(View):
     def get(self, request, **kwargs):
         a = self.request.GET.get('id')
         user_id = self.request.user
+<<<<<<< HEAD
         dsach_tin_dang = PhongTro.objects.filter(NguoiDung_id=user_id)
         return render(request, 'NguoiDung/profile.html', {'dsach_tin_dang': dsach_tin_dang})
 
@@ -81,3 +93,9 @@ def update_view(request, id):
     context["form"] = form
 
     return render(request, "NguoiDung/update.html", context)
+=======
+        print(a)
+        print(self)
+        dsach_tin_dang = PhongTro.objects.filter(NguoiDung_id=user_id)
+        return render(request, 'NguoiDung/profile.html', {'dsach_tin_dang': dsach_tin_dang})
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729

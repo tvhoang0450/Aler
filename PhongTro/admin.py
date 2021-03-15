@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
+<<<<<<< HEAD
 from .models import PhongTro, Images
 
 
@@ -21,3 +22,8 @@ class PhongTroAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PhongTro, PhongTroAdmin)
+=======
+from .models import PhongTro
+
+admin.site.register(PhongTro)
+>>>>>>> 2c68a77a700e53c38815547a749e531e88085729
